@@ -3,8 +3,10 @@ const express = require('express')
 const app = express()
 const port = 5000
 
+const config = require('./config/key')
+
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://dhlee:qwe123@cluster0.a9rdb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{
+mongoose.connect(config.mongoURI,{
  useNewUrlParser : true, useUnifiedTopology : true, useCreateIndex : true, useFindAndModify: false
 }).then(() => console.log('MongoDB Connect!!'))
   .catch(err => console.log(err))
@@ -12,6 +14,6 @@ mongoose.connect('mongodb+srv://dhlee:qwe123@cluster0.a9rdb.mongodb.net/myFirstD
 
 
 
-app.get('/',(req,res) => res.send('Hello World!!'))
+app.get('/',(req,res) => res.send('Hello World!! 노드몬'))
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
